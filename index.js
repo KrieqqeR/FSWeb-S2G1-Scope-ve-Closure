@@ -135,11 +135,16 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
-
+function periyotSkoru(takimSkoru) {
+  let evSahibig4 = takimSkoru();
+  let konukTakimg4 = takimSkoru();
+  return {
+    EvSahibi : evSahibig4,
+    KonukTakim : konukTakimg4
+  }
+  
 }
-periyotSkoru(takimSkoru())
+console.log(periyotSkoru(takimSkoru))
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
 Aşağıdaki skorTabelasi() fonksiyonunu kullanarak aşağıdakileri yapınız:
