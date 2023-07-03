@@ -30,10 +30,21 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
   
   1. skor1 ve skor2 arasındaki fark nedir?
+   
+  Skor 1 de skor değişkeninin güncellenmesi , sadece closure bloklarının içinde geçerlidir dışarıdan ilk başta müdahalede yoktur skor değişkenine.
+
+  Skor 2 de ise normal fonksiyon tanımı geçerlidir. Çağırıldıkca skor değişkenini artacaktır.
   
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
+
+  Skor 1 de closure kullanılmaktadır. return function sadece skorartirici fonksiyonun içindeki skor değişkenini günceller.
   
   3. Hangi durumda skor1 tercih edilebilir? Hangi durumda skor2 daha mantıklıdır?
+
+  Skor1 'in dışarıdan müdahelede edilmemesi istenildiğinde skor1 tarzı closure lar kullanılır.
+
+  Skor 2 ise genel global scope de değişkenin değerinin değişmesinin bir sakınca olmadıgı durumlarda kullanılması mantıklıdır.
+
 */
 
 // skor1 kodları
@@ -64,16 +75,24 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+
+let i;
+
+function takimSkoru(){
+    i = Math.floor((Math.random())*100)
+    while (i > 10 && i < 25){
+      return i;
+    }
+    return takimSkoru()
 }
+console.log(takimSkoru());
 
 
 
 
 /* Görev 3: macSonucu() 
 Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
-  1. Görev 2'de oluşturduğunuz 'takimSkoru'nu callback fonskiyonunu olarak ilk parametrede alın
+  1. Görev 2'de oluşturduğunuz 'takimSkoru'nu callback fonskiyonu olarak ilk parametrede alın
   2. Bir basketbol maçında oynanan çeyrek sayısını ikinci parametre olarak alın
   3. Her çeyrekte EvSahibi ve KonukTakim için bir skor oluşturun
   4. Her oynanan çeyrekten sonra EvSahibi ve KonukTakim için skoru güncelleyin
@@ -85,11 +104,20 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
   "KonukTakim": 80
 }
 */ 
+let evSahibi = 0;
+let konukTakim = 0;
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(takimSkoru,ceyrek){
+  
+ for (let i = 1; i=ceyrek; i++){
+    evSahibi+=takimSkoru;
+    konukTakim += takimSkoru;
+ }
+ return evSahibi , konukTakim
+
 }
 
+console.log(macSonucu(takimSkoru(),4))
 
 
 
